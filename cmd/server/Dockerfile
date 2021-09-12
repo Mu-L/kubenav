@@ -13,7 +13,7 @@ FROM golang:1.17.0-alpine3.14 as server
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "Building on $BUILDPLATFORM, for $TARGETPLATFORM" > /log
-RUN apk update && apk add git make
+RUN apk update && apk add git make build-base libc-dev
 WORKDIR /kubenav
 COPY go.mod go.sum /kubenav/
 RUN go mod download
